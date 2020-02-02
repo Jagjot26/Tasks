@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>482953203737-5mt1upkg8r8pf0sd423rl5q4i5b4ekr5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.482953203737-5mt1upkg8r8pf0sd423rl5q4i5b4ekr5</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>482953203737-utlr20c7thd099dgmrhks5k9npf82dnd.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAt3YZZ8tRh0rsiEFiKsi-EE2HRGYY8oiE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>482953203737</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.jugjot.taskApp</string>
+	<key>PROJECT_ID</key>
+	<string>taskapp-91efb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>taskapp-91efb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:482953203737:ios:a8bd6899a853e61efc5a88</string>
+	<key>DATABASE_URL</key>
+	<string>https://taskapp-91efb.firebaseio.com</string>
+</dict>
+</plist>

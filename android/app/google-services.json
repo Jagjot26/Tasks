@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "482953203737",
+    "firebase_url": "https://taskapp-91efb.firebaseio.com",
+    "project_id": "taskapp-91efb",
+    "storage_bucket": "taskapp-91efb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482953203737:android:bb302a44fe64e925fc5a88",
+        "android_client_info": {
+          "package_name": "com.jugjot.restat_task_app.task_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482953203737-utlr20c7thd099dgmrhks5k9npf82dnd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jugjot.restat_task_app.task_app",
+            "certificate_hash": "01d5706423534060951a6c772177884a771fe05e"
+          }
+        },
+        {
+          "client_id": "482953203737-vkc0l328dinnnvafbbp91ckp5de35sof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXN4K17WgTtIVR8uVKND-gx7oJvd8xFVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482953203737-vkc0l328dinnnvafbbp91ckp5de35sof.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "482953203737-5mt1upkg8r8pf0sd423rl5q4i5b4ekr5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jugjot.taskApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
