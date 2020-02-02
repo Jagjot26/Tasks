@@ -116,7 +116,7 @@ bool isChecked;
 
 class TasksList extends StatefulWidget {
   final String taskName;
-  final bool isDone;
+  bool isDone;
   TasksList({
     this.taskName,
     this.isDone,
@@ -128,9 +128,8 @@ class TasksList extends StatefulWidget {
 
 class _TasksListState extends State<TasksList> {
   toggleCheckBox() async {
-    setState(() {
-      isChecked = !isChecked;
-    });
+    widget.isDone = !widget.isDone;
+    setState(() {});
 
     // workersRef.document(tappedUsersUid).collection('tasks').
   }
@@ -151,14 +150,14 @@ class _TasksListState extends State<TasksList> {
             title: Text(
               widget.taskName,
               style: TextStyle(
-                  decoration: isChecked ? TextDecoration.lineThrough : null,
+                  decoration: widget.isDone ? TextDecoration.lineThrough : null,
                   color: Colors.black,
                   fontSize: 19.5,
                   fontFamily: 'Quicksand'),
             ),
             trailing: Checkbox(
               activeColor: Colors.lightBlueAccent,
-              value: isChecked,
+              value: widget.isDone,
               onChanged: (bool e) => toggleCheckBox(),
             ),
           ),
