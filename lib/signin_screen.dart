@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:task_app/owner_screen.dart';
 import 'package:task_app/progress.dart';
+import 'package:task_app/taskScreens/worker_task.dart';
 import 'worker_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -105,9 +106,11 @@ class _SignInScreenState extends State<SignInScreen> {
             (Route<dynamic> route) => false);
       } else {
         prefs.setString('type', 'Worker');
+        prefs.setString('uid', firebaseUser.uid);
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => WorkerScreen()),
+            MaterialPageRoute(
+                builder: (context) => WorkerTask(uid: firebaseUser.uid)),
             (Route<dynamic> route) => false);
       }
     } else {

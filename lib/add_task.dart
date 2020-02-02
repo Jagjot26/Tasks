@@ -20,18 +20,30 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   handleAddTask() async {
-    globalTotalTasks = widget.totalTasks + 1;
+    DocumentReference documentReference = workersRef.document(widget.uid);
+    DocumentSnapshot ds = await documentReference.get();
+    if (ds != null) {
+      if (ds.data['totalTasks'] != null) {
+        print(ds.data['totalTasks']);
+        globalTotalTasks = ds.data['totalTasks'];
+      }
+    }
+
     var newTask = {
       'title': newTaskValue,
       'isDone': false,
+      'timeCreated': DateTime.now(),
     };
-    setState(() {
-      isNewTotalTaskVal = true;
-    });
+
     workersRef
         .document(widget.uid)
-        .updateData({'totalTasks': globalTotalTasks});
+        .updateData({'totalTasks': globalTotalTasks + 1});
     workersRef.document(widget.uid).collection('tasks').add(newTask);
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override

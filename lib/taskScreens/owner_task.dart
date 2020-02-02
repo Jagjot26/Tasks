@@ -60,25 +60,17 @@ class _OwnerTaskState extends State<OwnerTask> {
                     'Tasks',
                     style: Theme.of(context).textTheme.headline.copyWith(
                         color: Colors.white,
-                        fontSize: 50,
+                        fontSize: 45,
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w800),
                   ),
-                  isNewTotalTaskVal
-                      ? Text(
-                          '${globalTotalTasks.toString()} Tasks',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        )
-                      : Text(
-                          '${widget.totalTasks.toString()} Tasks',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
+                  Text(
+                    '${widget.totalTasks.toString()} Tasks',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -93,7 +85,11 @@ class _OwnerTaskState extends State<OwnerTask> {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: TasksStream(),
+              child: Column(
+                children: <Widget>[
+                  Expanded(child: TasksStream()),
+                ],
+              ),
             ),
           ),
         ],
@@ -109,33 +105,28 @@ class TasksStream extends StatelessWidget {
       stream: workersRef
           .document(tappedUsersUid)
           .collection('tasks')
-          .orderBy('timeLastEdited', descending: true)
+          .orderBy('timeCreated', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
-        //this snapshot is different from the snapShot variable we used above
         if (!snapshot.hasData) {
           return Center(child: CircularProgressIndicator());
         }
         final tasks = snapshot.data.documents;
-        //gives u a list of map of messages which are reversed
-        List<TasksList> tasksList = []; //list of Text widgets
+
+        List<TasksList> tasksList = [];
         for (var task in tasks) {
-          final taskName = task.data[
-              'title']; //getting text value from the map by using 'text' key
-          final isDone = task.data[
-              'isDone']; //getting sender value from the map by using 'sender' key
+          final taskName = task.data['title'];
+          final isDone = task.data['isDone'];
 
           final workTile = TasksList(
             taskName: taskName,
             isDone: isDone,
           );
-          tasksList.add(workTile); //adds the Text widget to the list
-
+          tasksList.add(workTile);
         }
         return ListView(
           children: tasksList,
         );
-        //used a semi-colon here because we're in a method(i.e builder of StreamBuilder)
       },
     );
   }
@@ -152,15 +143,16 @@ class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
       child: Column(
         children: <Widget>[
           ListTile(
             title: Text(
               taskName,
               style: TextStyle(
-                decoration: isDone ? TextDecoration.lineThrough : null,
-              ),
+                  decoration: isDone ? TextDecoration.lineThrough : null,
+                  color: Colors.black,
+                  fontSize: 18),
             ),
             trailing: Checkbox(
               activeColor: Colors.lightBlueAccent,
@@ -169,7 +161,7 @@ class TasksList extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.02,
+            height: 4,
           ),
         ],
       ),

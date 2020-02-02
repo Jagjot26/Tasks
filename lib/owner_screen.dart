@@ -82,13 +82,11 @@ class WorkersStream extends StatelessWidget {
           return CircularProgressIndicator();
         }
         final workers = snapshot.data.documents;
-        //gives u a list of map of messages which are reversed
-        List<WorkerTiles> workerTiles = []; //list of Text widgets
+
+        List<WorkerTiles> workerTiles = [];
         for (var worker in workers) {
-          final workerName = worker.data[
-              'name']; //getting text value from the map by using 'text' key
-          final workerImage = worker.data[
-              'image']; //getting sender value from the map by using 'sender' key
+          final workerName = worker.data['name'];
+          final workerImage = worker.data['image'];
           final timeLastEdited = worker.data['timeLastEdited'];
           final totalTasks = worker.data['totalTasks'];
           final uid = worker.data['uid'];
@@ -100,8 +98,7 @@ class WorkersStream extends StatelessWidget {
             totalTasks: totalTasks,
             uid: uid,
           );
-          workerTiles.add(workTile); //adds the Text widget to the list
-
+          workerTiles.add(workTile);
         }
         return Expanded(
           child: SingleChildScrollView(

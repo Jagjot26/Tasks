@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:task_app/taskScreens/worker_task.dart';
 import 'signin_screen.dart';
 import 'home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -73,7 +74,8 @@ Widget _getLandingPage() {
     return HomeScreen();
   }
   if (sharedPrefs.getString('type') == 'Worker') {
-    return WorkerScreen();
+    String uid = sharedPrefs.getString('uid');
+    return WorkerTask(uid: uid);
   }
   if (sharedPrefs.getString('type') == 'Owner') {
     return OwnerScreen();
