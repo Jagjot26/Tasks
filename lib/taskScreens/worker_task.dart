@@ -215,7 +215,7 @@ class _TasksListState extends State<TasksList> {
               widget.taskName,
               style: TextStyle(
                   decoration: widget.isDone ? TextDecoration.lineThrough : null,
-                  color: Colors.black,
+                  color: widget.isDone ? Colors.lightBlueAccent : Colors.black,
                   fontSize: 19.5,
                   fontFamily: 'Quicksand'),
             ),

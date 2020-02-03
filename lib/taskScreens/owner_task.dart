@@ -64,13 +64,6 @@ class _OwnerTaskState extends State<OwnerTask> {
                         fontFamily: 'Quicksand',
                         fontWeight: FontWeight.w800),
                   ),
-                  Text(
-                    '${widget.totalTasks.toString()} Tasks',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -150,9 +143,11 @@ class TasksList extends StatelessWidget {
             title: Text(
               taskName,
               style: TextStyle(
-                  decoration: isDone ? TextDecoration.lineThrough : null,
-                  color: Colors.black,
-                  fontSize: 18),
+                decoration: isDone ? TextDecoration.lineThrough : null,
+                color: isDone ? Colors.black54 : Colors.black,
+                fontSize: 18,
+                fontFamily: 'Quicksand',
+              ),
             ),
             trailing: Checkbox(
               activeColor: Colors.lightBlueAccent,
