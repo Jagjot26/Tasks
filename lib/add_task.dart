@@ -33,12 +33,17 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       'title': newTaskValue,
       'isDone': false,
       'timeCreated': DateTime.now(),
+      'id': globalTotalTasks + 1,
     };
-
+    int docId = globalTotalTasks + 1;
     workersRef
         .document(widget.uid)
         .updateData({'totalTasks': globalTotalTasks + 1});
-    workersRef.document(widget.uid).collection('tasks').add(newTask);
+    workersRef
+        .document(widget.uid)
+        .collection('tasks')
+        .document('${docId.toString()}')
+        .setData(newTask);
   }
 
   @override

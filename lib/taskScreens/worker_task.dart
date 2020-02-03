@@ -1,13 +1,22 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../add_task.dart';
+import '../home_screen.dart';
+import '../progress.dart';
 
 String tappedUsersUid = '';
 int totalTasks;
 final workersRef = Firestore.instance.collection('workers');
+bool isLoading = false;
 
 class WorkerTask extends StatefulWidget {
   final String uid;
@@ -23,6 +32,30 @@ class _WorkerTaskState extends State<WorkerTask> {
     super.initState();
     tappedUsersUid = widget.uid;
     print(tappedUsersUid);
+    isLoading = false;
+  }
+
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  Future<Null> handleSignOut() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('type', '0');
+    // this.setState(() {
+    //   isLoading = true;
+    // });
+    setState(() {
+      isLoading = true;
+    });
+
+    await FirebaseAuth.instance.signOut();
+    await googleSignIn.disconnect();
+    await googleSignIn.signOut();
+
+    // this.setState(() {
+    //   isLoading = false;
+    // });
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+        (Route<dynamic> route) => false);
   }
 
   @override
@@ -43,13 +76,27 @@ class _WorkerTaskState extends State<WorkerTask> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'Tasks',
-                    style: Theme.of(context).textTheme.headline.copyWith(
-                        color: Colors.white,
-                        fontSize: 45,
-                        fontFamily: 'Quicksand',
-                        fontWeight: FontWeight.w800),
+                  ListTile(
+                    leading: Text(
+                      'Tasks',
+                      style: Theme.of(context).textTheme.headline.copyWith(
+                          color: Colors.white,
+                          fontSize: 45,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.w600),
+                    ),
+                    trailing: GestureDetector(
+                      onTap: () => handleSignOut(),
+                      child: isLoading
+                          ? CircleAvatar(
+                              backgroundColor: Colors.lightBlueAccent,
+                              child: spinkit(),
+                            )
+                          : Icon(
+                              AntDesign.logout,
+                              color: Colors.white,
+                            ),
+                    ),
                   ),
                 ],
               ),
@@ -97,10 +144,11 @@ class TasksStream extends StatelessWidget {
         for (var task in tasks) {
           final taskName = task.data['title'];
           final isDone = task.data['isDone'];
-
+          final id = task.data['id'];
           final workTile = TasksList(
             taskName: taskName,
             isDone: isDone,
+            id: id,
           );
           tasksList.add(workTile);
         }
@@ -113,14 +161,13 @@ class TasksStream extends StatelessWidget {
 }
 
 bool isChecked;
+bool isLoad = false;
 
 class TasksList extends StatefulWidget {
   final String taskName;
   bool isDone;
-  TasksList({
-    this.taskName,
-    this.isDone,
-  });
+  final String id;
+  TasksList({this.taskName, this.isDone, this.id});
 
   @override
   _TasksListState createState() => _TasksListState();
@@ -128,15 +175,24 @@ class TasksList extends StatefulWidget {
 
 class _TasksListState extends State<TasksList> {
   toggleCheckBox() async {
+    isLoad = true;
+    setState(() {});
+    workersRef
+        .document(tappedUsersUid)
+        .collection('tasks')
+        .document(widget.id)
+        .updateData({'isDone': true});
+    isLoad = false;
     widget.isDone = !widget.isDone;
     setState(() {});
-
+    Fluttertoast.showToast(msg: "Task completed!");
     // workersRef.document(tappedUsersUid).collection('tasks').
   }
 
   @override
   void initState() {
     isChecked = this.widget.isDone;
+    isLoad = false;
     super.initState();
   }
 
@@ -155,11 +211,16 @@ class _TasksListState extends State<TasksList> {
                   fontSize: 19.5,
                   fontFamily: 'Quicksand'),
             ),
-            trailing: Checkbox(
-              activeColor: Colors.lightBlueAccent,
-              value: widget.isDone,
-              onChanged: (bool e) => toggleCheckBox(),
-            ),
+            trailing: isLoad
+                ? CircleAvatar(
+                    backgroundColor: Colors.lightBlueAccent,
+                    child: spinkit(),
+                  )
+                : Checkbox(
+                    activeColor: Colors.lightBlueAccent,
+                    value: widget.isDone,
+                    onChanged: (bool e) => toggleCheckBox(),
+                  ),
           ),
           SizedBox(
             height: 4,
