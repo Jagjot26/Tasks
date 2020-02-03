@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_app/progress.dart';
@@ -19,20 +20,24 @@ class _OwnerScreenState extends State<OwnerScreen> {
   Future<Null> handleSignOut() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('type', '0');
-    // this.setState(() {
-    //   isLoading = true;
-    // });
 
+    setState(() {
+      isLoading = true;
+    });
     await FirebaseAuth.instance.signOut();
     await googleSignIn.disconnect();
     await googleSignIn.signOut();
 
-    // this.setState(() {
-    //   isLoading = false;
-    // });
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => HomeScreen()),
         (Route<dynamic> route) => false);
+  }
+
+  bool isLoading;
+  @override
+  void initState() {
+    super.initState();
+    isLoading = false;
   }
 
 //UI LOGIC
@@ -48,21 +53,31 @@ class _OwnerScreenState extends State<OwnerScreen> {
                 MediaQuery.of(context).size.height * 0.07,
                 MediaQuery.of(context).size.height * 0.045,
                 MediaQuery.of(context).size.height * 0.04),
-            child: Text(
-              "Workers",
-              textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.headline.copyWith(
-                  color: Colors.white,
-                  fontSize: 50,
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.w900),
+            child: ListTile(
+              leading: Text(
+                "Workers",
+                textAlign: TextAlign.start,
+                style: Theme.of(context).textTheme.headline.copyWith(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontFamily: 'Quicksand',
+                    fontWeight: FontWeight.w900),
+              ),
+              trailing: GestureDetector(
+                onTap: () => handleSignOut(),
+                child: isLoading
+                    ? CircleAvatar(
+                        backgroundColor: Colors.lightBlueAccent,
+                        child: spinkit(),
+                      )
+                    : Icon(
+                        AntDesign.logout,
+                        color: Colors.white,
+                      ),
+              ),
             ),
           ),
           WorkersStream(),
-          RaisedButton(
-            onPressed: () => handleSignOut(),
-            child: Text("Sign Out"),
-          ),
         ],
       ),
     );

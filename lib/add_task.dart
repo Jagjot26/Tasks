@@ -24,7 +24,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     DocumentSnapshot ds = await documentReference.get();
     if (ds != null) {
       if (ds.data['totalTasks'] != null) {
-        print(ds.data['totalTasks']);
         globalTotalTasks = ds.data['totalTasks'];
       }
     }
@@ -36,13 +35,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       'id': globalTotalTasks + 1,
     };
     int docId = globalTotalTasks + 1;
+    print(docId);
+    String newId = docId.toString();
     workersRef
         .document(widget.uid)
         .updateData({'totalTasks': globalTotalTasks + 1});
     workersRef
         .document(widget.uid)
         .collection('tasks')
-        .document('${docId.toString()}')
+        .document(newId)
         .setData(newTask);
   }
 

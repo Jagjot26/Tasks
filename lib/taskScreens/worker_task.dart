@@ -39,20 +39,14 @@ class _WorkerTaskState extends State<WorkerTask> {
   Future<Null> handleSignOut() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('type', '0');
-    // this.setState(() {
+    // setState(() {
     //   isLoading = true;
     // });
-    setState(() {
-      isLoading = true;
-    });
 
     await FirebaseAuth.instance.signOut();
     await googleSignIn.disconnect();
     await googleSignIn.signOut();
 
-    // this.setState(() {
-    //   isLoading = false;
-    // });
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => HomeScreen()),
         (Route<dynamic> route) => false);
@@ -166,7 +160,7 @@ bool isLoad = false;
 class TasksList extends StatefulWidget {
   final String taskName;
   bool isDone;
-  final String id;
+  final int id;
   TasksList({this.taskName, this.isDone, this.id});
 
   @override
@@ -177,15 +171,29 @@ class _TasksListState extends State<TasksList> {
   toggleCheckBox() async {
     isLoad = true;
     setState(() {});
-    workersRef
-        .document(tappedUsersUid)
-        .collection('tasks')
-        .document(widget.id)
-        .updateData({'isDone': true});
-    isLoad = false;
-    widget.isDone = !widget.isDone;
-    setState(() {});
-    Fluttertoast.showToast(msg: "Task completed!");
+    if (widget.isDone) {
+      workersRef
+          .document(tappedUsersUid)
+          .collection('tasks')
+          .document(widget.id.toString())
+          .updateData({'isDone': false});
+      isLoad = false;
+      widget.isDone = !widget.isDone;
+      setState(() {});
+    } else {
+      workersRef
+          .document(tappedUsersUid)
+          .collection('tasks')
+          .document(widget.id.toString())
+          .updateData({'isDone': true});
+      isLoad = false;
+      widget.isDone = !widget.isDone;
+      setState(() {});
+    }
+
+    if (widget.isDone) {
+      Fluttertoast.showToast(msg: "Task completed!");
+    }
     // workersRef.document(tappedUsersUid).collection('tasks').
   }
 
