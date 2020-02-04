@@ -45,6 +45,9 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        ndk {
+        abiFilters 'x86-64', 'armeabi-v7a'
+        }
     }
 
     buildTypes {

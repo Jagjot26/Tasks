@@ -54,57 +54,104 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(top: 30, right: 40, left: 40, bottom: 30),
-        child: Column(
-          children: <Widget>[
-            Text(
-              'Add task',
-              style: TextStyle(
-                color: Colors.lightBlueAccent,
-                fontSize: 35,
+    return Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
+                ),
               ),
-            ),
-            TextField(
-              autofocus: true,
-              onChanged: (val) {
-                newTaskValue = val;
-              },
-            ),
-            SizedBox(
-              height: 38,
-            ),
-            ButtonTheme(
-              height: 60,
-              minWidth: double.infinity,
-              child: RaisedButton(
-                color: Colors.lightBlueAccent,
-                onPressed: () {
-                  handleAddTask();
-                  // Provider.of<TaskData>(context).addTask(newTaskValue);
-                  Navigator.pop(context);
-                },
-                padding: EdgeInsets.symmetric(horizontal: 100),
-                child: Text(
-                  'Add',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
+              child: Padding(
+                padding:
+                    EdgeInsets.only(top: 30, right: 40, left: 40, bottom: 30),
+                child: SingleChildScrollView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        'Add task',
+                        style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 35,
+                        ),
+                      ),
+                      TextField(
+                        autofocus: true,
+                        onChanged: (val) {
+                          newTaskValue = val;
+                        },
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: GestureDetector(
+                          onTap: () {
+                            handleAddTask();
+                            Navigator.pop(context);
+                          },
+                          child: Card(
+                            color: Colors.lightBlueAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(27.0),
+                            ),
+                            margin: EdgeInsets.symmetric(vertical: 1.0),
+                            child: ListTile(
+                              title: Text(
+                                "Add new task",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 22),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
+
+// ButtonTheme(
+//                       height: MediaQuery.of(context).size.height * 0.07,
+//                       minWidth: double.infinity,
+//                       child: Padding(
+//                         padding: EdgeInsets.only(
+//                             bottom: MediaQuery.of(context).viewInsets.bottom),
+//                         child: RaisedButton(
+//                           color: Colors.lightBlueAccent,
+//                           onPressed: () {
+//                             handleAddTask();
+//                             Navigator.pop(context);
+//                           },
+//                           padding: EdgeInsets.symmetric(horizontal: 100),
+//                           child: Text(
+//                             'Add',
+//                             style: TextStyle(
+//                               fontSize: 20,
+//                               color: Colors.white,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                     ),

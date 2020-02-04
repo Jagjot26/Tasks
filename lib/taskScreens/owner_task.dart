@@ -27,9 +27,11 @@ class _OwnerTaskState extends State<OwnerTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+              isScrollControlled: true,
               backgroundColor: Colors
                   .transparent, //we did this because by default, this(the bottom ACTIVE part) has a white color and in order to look at the round edges of the container, we needed a transparent color
               context: context,
