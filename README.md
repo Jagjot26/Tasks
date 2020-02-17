@@ -31,8 +31,7 @@
 
 
 ### Workers can sign in and check off the tasks that they've done
-![t2](https://user-images.githubusercontent.com/51400182/74667619-9c40f300-51c9-11ea-960f-39c1b68de96e.gif)
-
+![t2](https://user-images.githubusercontent.com/51400182/74667718-d3170900-51c9-11ea-863f-8ba9bb078232.gif)
 
 
 ### Changes will be reflected on the shopkeeper's tasks' list of that worker
