@@ -19,22 +19,20 @@
 
 # Screenshots and Demonstration
 
-![intro](https://user-images.githubusercontent.com/51400182/74666137-fbe9cf00-51c6-11ea-9875-27ec39b78a8c.gif)
+![intro480](https://user-images.githubusercontent.com/51400182/74667106-bb8b5080-51c8-11ea-90f8-2edb62544ec5.gif)
 
 ### Shopkeepers can sign in and see a list of workers
-![Screenshot_2020-02-17-19-31-48-507_com jugjot restat_task_app task_app](https://user-images.githubusercontent.com/51400182/74666218-1fad1500-51c7-11ea-8204-f13a2809cabd.jpg)
+![s1](https://user-images.githubusercontent.com/51400182/74667093-b62e0600-51c8-11ea-99c3-342eeebfca70.png)
 
 ### Then, they can and tap on a worker to assign tasks to him
-![Screenshot_2020-02-17-19-38-45-274_com jugjot restat_task_app task_app](https://user-images.githubusercontent.com/51400182/74666294-3e131080-51c7-11ea-9eef-123620931a4d.jpg)
-![Screenshot_2020-02-17-19-35-31-268_com jugjot restat_task_app task_app](https://user-images.githubusercontent.com/51400182/74666358-58e58500-51c7-11ea-98b1-8b88a413f582.jpg)
+![s2](https://user-images.githubusercontent.com/51400182/74667091-b5956f80-51c8-11ea-9c1c-d9ab47a738e3.png)
+![s3](https://user-images.githubusercontent.com/51400182/74667098-b6c69c80-51c8-11ea-9705-b68d12dd19f4.png)
 
 ### Workers can sign in and check off the tasks that they've done
-![task-checked](https://user-images.githubusercontent.com/51400182/74666423-761a5380-51c7-11ea-95e3-dd0a5384c727.gif)
+![checked-480](https://user-images.githubusercontent.com/51400182/74667110-bcbc7d80-51c8-11ea-8cb8-f2e9cca8f5ac.gif)
 
 ### Changes will be reflected on the shopkeeper's tasks' list of that worker
-![Screenshot_2020-02-17-19-39-36-352_com jugjot restat_task_app task_app](https://user-images.githubusercontent.com/51400182/74666552-b679d180-51c7-11ea-8238-6eeee5f48294.jpg)
-
-
+![s4](https://user-images.githubusercontent.com/51400182/74667097-b6c69c80-51c8-11ea-842d-d5a80832d939.png)
 
 
 
