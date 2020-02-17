@@ -24,16 +24,16 @@
 ### Shopkeepers can sign in and see a list of workers
 ![s1](https://user-images.githubusercontent.com/51400182/74667093-b62e0600-51c8-11ea-99c3-342eeebfca70.png)
 
-<br>
+
 ### Then, they can and tap on a worker to assign tasks to him
 ![s2](https://user-images.githubusercontent.com/51400182/74667091-b5956f80-51c8-11ea-9c1c-d9ab47a738e3.png)
 ![s3](https://user-images.githubusercontent.com/51400182/74667098-b6c69c80-51c8-11ea-9705-b68d12dd19f4.png)
 
-<br>
+
 ### Workers can sign in and check off the tasks that they've done
 ![checked-480](https://user-images.githubusercontent.com/51400182/74667110-bcbc7d80-51c8-11ea-8cb8-f2e9cca8f5ac.gif)
 
-<br>
+
 ### Changes will be reflected on the shopkeeper's tasks' list of that worker
 ![s4](https://user-images.githubusercontent.com/51400182/74667097-b6c69c80-51c8-11ea-842d-d5a80832d939.png)
 
