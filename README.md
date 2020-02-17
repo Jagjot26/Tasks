@@ -3,7 +3,7 @@
 ### Tasks is a simple tasks' list app that allows shopowners and the workers to do their jobs efficiently. Shopkeepers assign tasks to the workers on their phones. Workers can check tasks off the list once they have done the task. Changes will also be reflected on the shopkeeper's list of that worker's tasks.
 
 
-# Features:
+# Working:
 
 - Shopkeeepers can sign in and see a list of all the workers
 - Shopkeepers can select a worker and assign a new task to him
