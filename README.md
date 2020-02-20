@@ -31,7 +31,7 @@
 
 ## Then, they can and tap on a worker to assign tasks to him
 ![s2](https://user-images.githubusercontent.com/51400182/74667091-b5956f80-51c8-11ea-9c1c-d9ab47a738e3.png)
-![newArrowRightSize](https://user-images.githubusercontent.com/51400182/74915913-fd93dc80-53ea-11ea-9333-7d50cc2067ad.png)
+![tinyArrow](https://user-images.githubusercontent.com/51400182/74916354-b5c18500-53eb-11ea-8fbc-d13cc8093fe0.png)
 ![s3](https://user-images.githubusercontent.com/51400182/74667098-b6c69c80-51c8-11ea-9705-b68d12dd19f4.png)
 
 <br/>
